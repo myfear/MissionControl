@@ -15,15 +15,20 @@
  */
 package net.eisele.mcontrl.boundry;
 
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import net.eisele.mcontrl.control.MissionService;
 import net.eisele.mcontrl.control.PersonService;
 import net.eisele.mcontrl.entities.Mission;
+import net.eisele.mcontrl.entities.Person;
 
 /**
  *
@@ -39,14 +44,20 @@ public class MissionFacade {
     MissionService missionService;
 
     @POST
-    @Consumes("application/json")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void create(Mission entity) {
         missionService.create(entity);
     }
 
     @PUT
-    @Consumes("application/json")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void edit(Mission entity) {
         missionService.edit(entity);
+    }
+
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<Mission> getAll() {
+        return missionService.getAll();
     }
 }

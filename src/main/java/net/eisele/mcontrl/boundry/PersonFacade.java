@@ -28,6 +28,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import net.eisele.mcontrl.control.PersonService;
 import net.eisele.mcontrl.entities.Person;
 
@@ -44,13 +45,13 @@ public class PersonFacade {
     PersonService personService;
 
     @POST
-    @Consumes("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
     public void create(Person entity) {
         personService.create(entity);
     }
 
     @PUT
-    @Consumes("application/json")
+    @Consumes(MediaType.APPLICATION_JSON)
     public void edit(Person entity) {
         personService.edit(entity);
     }
@@ -63,20 +64,20 @@ public class PersonFacade {
 
     @GET
     @Path("{id}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Person find(@PathParam("id") Long id) {
         return personService.find(id);
     }
 
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Person> getAll() {
         return personService.getAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Person> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return personService.findRange(new int[]{from, to});
     }
