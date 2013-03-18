@@ -30,7 +30,7 @@ import javax.faces.flow.builder.FlowDefinition;
  */
 public class NewEmployeeFlow implements Serializable {
 
-    private static final long serialVersionUID = -7623501087369765218L;
+    private static final long serialVersionUID = 1L;
     private static final Logger logger = Logger.getLogger(NewEmployeeFlow.class.getName());
 
     public NewEmployeeFlow() {
@@ -41,23 +41,10 @@ public class NewEmployeeFlow implements Serializable {
     public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
         logger.log(Level.INFO, "Building Flow! ");
         String flowId = "employee-flow";
-      flowBuilder.id("", flowId);
+        flowBuilder.id("", flowId);
         flowBuilder.returnNode("taskFlowReturn1").
                 fromOutcome("#{employee.returnToIndex}");
         flowBuilder.navigationCase().fromAction("addEmployee").toViewId("addEmployee");
-
-        /**
-         * flowBuilder.returnNode("taskFlowReturn1").
-         * fromOutcome("#{flow_a_Bean.returnValue}");
-         * flowBuilder.inboundParameter("param1FromFlowB",
-         * "#{flowScope.param1Value}");
-         * flowBuilder.inboundParameter("param2FromFlowB",
-         * "#{flowScope.param2Value}");
-         * flowBuilder.flowCallNode("callB").flowReference("", "flow-b").
-         * outboundParameter("param1FromFlowA", "param1Value").
-         * outboundParameter("param2FromFlowA", "param2Value");
-         *
-         */
         return flowBuilder.getFlow();
     }
 }

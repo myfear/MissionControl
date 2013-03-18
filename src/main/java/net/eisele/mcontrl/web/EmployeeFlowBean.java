@@ -31,6 +31,9 @@ public class EmployeeFlowBean implements Serializable {
     
     private int orgunit;
 
+    public EmployeeFlowBean() {
+    }
+
   
 
     public int getOrgunit() {
