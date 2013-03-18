@@ -1,2 +1,3 @@
 INSERT INTO ORGUNIT ("ID","COSTCENTER", "LOCATION", "NAME") VALUES (1,'100', 'Munich', 'XT')
-INSERT INTO PERSON ("ID","DAYSWEEK", "EMAIL","HOURSWEEK","LOCATION","NAME", "PASSWORD", "ORGUNIT_ID") VALUES (1,5, 'markus@eisele.net', 40, 'munich','Markus Eisele', 'test', 1)
+INSERT INTO PERSON ("ID","DAYSWEEK", "EMAIL","HOURSWEEK","LOCATION","NAME", "PASSWORD", "ORGUNIT_ID") VALUES (1,5, 'markus@eisele.net', 40, 'Munich','Markus Eisele', 'test', 1)
+INSERT INTO PERSON ("ID","DAYSWEEK", "EMAIL","HOURSWEEK","LOCATION","NAME", "PASSWORD", "ORGUNIT_ID") VALUES (2,5, 'someone@eisele.net', 40, 'Munich','My Peer', 'test', 1)

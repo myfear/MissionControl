@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/WEB-INF/basic_design.xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+
+        <h:form>
+
+            <h1><h:outputText value="Create/Edit"/></h1>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Name:" for="name" />
+                <h:inputText id="name" value="#{employeeFlow.person.name}" title="Name" />
+                <h:outputLabel value="Email:" for="email" />
+                <h:inputText id="email" value="#{employeeFlow.person.email}" title="Email" />
+                <h:outputLabel value="Password:" for="password" />
+                <h:inputText id="password" value="#{employeeFlow.person.password}" title="Password" />
+                <h:outputLabel value="Role:" for="role" />
+                <h:inputText id="role" value="#{employeeFlow.person.role}" title="Role" />
+                <h:outputLabel value="Hoursweek:" for="hoursweek" />
+                <h:inputText id="hoursweek" value="#{employeeFlow.person.hoursweek}" title="Hoursweek" />
+                <h:outputLabel value="Daysweek:" for="daysweek" />
+                <h:inputText id="daysweek" value="#{employeeFlow.person.daysweek}" title="Daysweek" />
+                <h:outputLabel value="Location:" for="location" />
+                <h:inputText id="location" value="#{employeeFlow.person.location}" title="Location" />
+                <h:outputLabel value="Picture:" for="picture" />
+                <h:inputText id="picture" value="#{employeeFlow.person.picture}" title="Picture" />
+                <h:outputLabel value="Id:" for="id" />
+                <h:inputText id="id" value="#{employeeFlow.person.id}" title="Id" />
+                <h:outputLabel value="OrgUnit:" for="orgUnit" />
+                <h:inputText id="orgUnit" value="#{employeeFlow.person.id}" title="orgUnit" />
+            </h:panelGrid>
+
+
+
+
+            <h:commandButton value="Save" action="confirm" />
+            <h:commandButton id="back" value="Back" action="returnToIndex" />
+
+
+        </h:form>
+
+
+    </ui:define>
+
+</ui:composition>

@@ -13,42 +13,39 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package net.eisele.mcontrl.control;
+package net.eisele.mcontrl.web;
 
-import java.util.List;
-import javax.ejb.Stateless;
+import java.io.Serializable;
+import javax.faces.flow.FlowScoped;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import net.eisele.mcontrl.entities.OrgUnit;
 
 /**
  *
  * @author eiselem
  */
 @Named
-@Stateless
-public class OrganisationService extends AbstractService<OrgUnit> {
+@FlowScoped("employee-flow")
+public class EmployeeFlowBean implements Serializable {
 
-    @PersistenceContext
-    protected EntityManager em;
+    private static final long serialVersionUID = 1L;
+    
+    private int orgunit;
 
-    public OrganisationService() {
-        super(OrgUnit.class);
+  
+
+    public int getOrgunit() {
+        return orgunit;
     }
 
-    @Override
-    public void create(OrgUnit entity) {
-        super.create(entity);
+    public void setOrgunit(int orgunit) {
+        this.orgunit = orgunit;
     }
 
-    @Override
-    public List<OrgUnit> getAll() {
-        return super.getAll();
+    public String returnToIndex() {
+        return "/index";
     }
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    public String newEmplyoee() {
+        return "newEmployee";
     }
 }

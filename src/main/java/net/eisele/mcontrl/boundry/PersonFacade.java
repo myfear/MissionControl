@@ -16,10 +16,10 @@
 package net.eisele.mcontrl.boundry;
 
 import java.util.List;
-import net.eisele.mcontrl.control.AbstractService;
+import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -28,6 +28,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import net.eisele.mcontrl.control.PersonService;
 import net.eisele.mcontrl.entities.Person;
 
 /**
@@ -36,58 +37,47 @@ import net.eisele.mcontrl.entities.Person;
  */
 @Stateless
 @Path("person")
-public class PersonFacade extends AbstractService<Person> {
+public class PersonFacade {
 
-    @PersistenceContext
-    protected EntityManager em;
-
-    public PersonFacade() {
-        super(Person.class);
-    }
+    private static final Logger logger = Logger.getLogger(PersonFacade.class.getName());
+    @EJB
+    PersonService personService;
 
     @POST
-    @Override
     @Consumes("application/json")
     public void create(Person entity) {
-        super.create(entity);
+        personService.create(entity);
     }
 
     @PUT
-    @Override
     @Consumes("application/json")
     public void edit(Person entity) {
-        super.edit(entity);
+        personService.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") Integer id) {
-        super.remove(super.find(id));
+    public void remove(@PathParam("id") Long id) {
+        personService.remove(personService.find(id));
     }
 
     @GET
     @Path("{id}")
     @Produces("application/json")
-    public Person find(@PathParam("id") Integer id) {
-        return super.find(id);
+    public Person find(@PathParam("id") Long id) {
+        return personService.find(id);
     }
 
     @GET
-    @Override
     @Produces("application/json")
     public List<Person> getAll() {
-        return super.getAll();
+        return personService.getAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces("application/json")
     public List<Person> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
-        return super.findRange(new int[]{from, to});
-    }
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+        return personService.findRange(new int[]{from, to});
     }
 }
