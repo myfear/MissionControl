@@ -15,10 +15,14 @@
  */
 package net.eisele.mcontrl.boundry;
 
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
+import javax.inject.Inject;
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonArrayBuilder;
+import javax.json.JsonBuilderFactory;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -28,36 +32,42 @@ import javax.ws.rs.core.MediaType;
 import net.eisele.mcontrl.control.MissionService;
 import net.eisele.mcontrl.control.PersonService;
 import net.eisele.mcontrl.entities.Mission;
-import net.eisele.mcontrl.entities.Person;
 
 /**
  *
  * @author eiselem
  */
-@Stateless
 @Path("mission")
+@Produces(MediaType.APPLICATION_JSON)
 public class MissionFacade {
 
-    @EJB
+    private static final Logger logger = Logger.getLogger(MissionFacade.class.getName());
+    private JsonBuilderFactory factory = Json.createBuilderFactory(null);
+    
+    @Inject
     PersonService personService;
-    @EJB
+    @Inject
     MissionService missionService;
+    
 
     @POST
-    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void create(Mission entity) {
         missionService.create(entity);
     }
 
     @PUT
-    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public void edit(Mission entity) {
         missionService.edit(entity);
     }
 
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<Mission> getAll() {
-        return missionService.getAll();
+    public JsonArray getAll() {
+        logger.log(Level.INFO, "getAll() {0}", missionService.hello());
+
+        JsonArrayBuilder builder = factory.createArrayBuilder();
+        for (Mission m : missionService.getAll()) {
+            builder.add(factory.createObjectBuilder().add("name", m.getName()).add("id", m.getId()));
+        }
+        return builder.build();
     }
 }

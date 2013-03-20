@@ -26,15 +26,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import net.eisele.mcontrl.entities.types.MissionState;
 
 /**
@@ -43,7 +40,6 @@ import net.eisele.mcontrl.entities.types.MissionState;
  */
 @Entity
 @Table(name = "MISSION")
-@XmlRootElement
 public class Mission implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -74,6 +74,10 @@ public class MissionService extends AbstractService<Mission> {
         return super.findRange(range);
     }
 
+    public String hello() {
+        return "Hello";
+    }
+
     @Override
     protected EntityManager getEntityManager() {
         return this.em;
