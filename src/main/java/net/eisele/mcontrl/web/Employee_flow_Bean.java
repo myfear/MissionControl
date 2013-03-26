@@ -25,13 +25,13 @@ import javax.inject.Named;
  */
 @Named
 @FlowScoped("employee-flow")
-public class EmployeeFlowBean implements Serializable {
+public class Employee_flow_Bean implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     private int orgunit;
 
-    public EmployeeFlowBean() {
+    public Employee_flow_Bean() {
     }
 
   

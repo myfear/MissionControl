@@ -15,7 +15,6 @@
  */
 package net.eisele.mcontrl.config;
 
-import java.util.Set;
 import javax.ws.rs.core.Application;
 
 /**

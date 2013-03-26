@@ -28,12 +28,12 @@ import javax.faces.flow.builder.FlowDefinition;
  *
  * @author eiselem
  */
-public class NewEmployeeFlow implements Serializable {
+public class FlowNewEmployee implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final Logger logger = Logger.getLogger(NewEmployeeFlow.class.getName());
+    private static final Logger logger = Logger.getLogger(FlowNewEmployee.class.getName());
 
-    public NewEmployeeFlow() {
+    public FlowNewEmployee() {
     }
 
     @Produces
@@ -41,7 +41,7 @@ public class NewEmployeeFlow implements Serializable {
     public Flow defineFlow(@FlowBuilderParameter FlowBuilder flowBuilder) {
         logger.log(Level.INFO, "Building Flow! ");
         String flowId = "employee-flow";
-        flowBuilder.id("", flowId);
+        flowBuilder.id("unique", flowId);
         flowBuilder.returnNode("taskFlowReturn1").
                 fromOutcome("#{employee.returnToIndex}");
         flowBuilder.navigationCase().fromAction("addEmployee").toViewId("addEmployee");

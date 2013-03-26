@@ -41,14 +41,14 @@ import net.eisele.mcontrl.entities.Mission;
 @Produces(MediaType.APPLICATION_JSON)
 public class MissionFacade {
 
-    private static final Logger logger = Logger.getLogger(MissionFacade.class.getName());
-    private JsonBuilderFactory factory = Json.createBuilderFactory(null);
+    @Inject
+    private transient Logger logger;
     
+    private JsonBuilderFactory factory = Json.createBuilderFactory(null);
     @Inject
     PersonService personService;
     @Inject
     MissionService missionService;
-    
 
     @POST
     public void create(Mission entity) {

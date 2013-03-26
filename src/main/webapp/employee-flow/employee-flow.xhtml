@@ -10,7 +10,7 @@
 
         <h2>Select Organisation</h2>
         <h:form prependId="false">
-            <h:selectOneRadio value="#{employeeFlowBean.orgunit}" 
+            <h:selectOneRadio value="#{employee_flow_Bean.orgunit}" 
                               layout="pageDirection" required="true">
                 <c:forEach items="#{organisationService.all}" var="o"> 
                     <f:selectItem itemValue="#{o.id}" itemLabel="#{o.name}"/>

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,11 +11,13 @@
         <ui:composition template="./WEB-INF/basic_design.xhtml">
 
             <ui:define name="left">
-                 <h:form prependId="false">
-                   <h:commandLink id="start_employee" action="employee">Enter Employee Flow</h:commandLink>
-                 <h:commandButton id="start_employee2" value="enter flow-employee" 
-                            action="employee" />
-                 </h:form>
+                <h:form prependId="false">
+                    <h:commandLink id="start_employee" action="employee-flow">Enter Employee Flow</h:commandLink>
+                    <h:commandButton id="start_employee2" value="enter flow-employee" 
+                                     action="employee-flow" >
+                        <f:attribute name="to-flow-document-id" value="unique"/>
+                    </h:commandButton>
+                </h:form>
             </ui:define>
 
         </ui:composition>

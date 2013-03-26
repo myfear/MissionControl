@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -39,7 +40,8 @@ import net.eisele.mcontrl.entities.Person;
 @Path("person")
 public class PersonFacade {
 
-    private static final Logger logger = Logger.getLogger(PersonFacade.class.getName());
+    @Inject
+    private transient Logger logger;
     @EJB
     PersonService personService;
 
